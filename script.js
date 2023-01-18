@@ -1,11 +1,21 @@
-let camaGrande, camaMediana, camaChica, cuotas, producto, intentos, nombre, apellido;
-precioCamaGrande = Number(1200);
-precioCamaMediana = Number(900)
-precioCamaChica = Number(600)
-camaGrande = "Cama grande"
-camaMediana = "Cama mediana"
-camaChica = "Cama chica"
-intentos = 3
+let intentos = 3
+
+class Producto {
+    constructor(nombre, precio, stock) {
+        this.nombre = nombre
+        this.precio = Number(precio)
+        this.stock = stock
+    }
+}
+
+const camaChica = new Producto("Cama chica", 600, true)
+const camaMediana = new Producto("Cama mediana", 900, true)
+const camaGrande = new Producto("Cama grande", 1200, false)
+
+const productos = [camaChica, camaMediana, camaGrande]
+
+
+
 
 function login(params) {
 
@@ -18,87 +28,71 @@ function login(params) {
             alert("Le falto rellenar un casillero")
         } else {
             alert("Bienvenido")
-            break 
+            break
         }
         alert("Fallo en el registro le quedan " + intentos + " intentos.");
         intentos--;
-        
 
-    }if (intentos === -1) {
-        intentos += 4 
+
+    }
+    if (intentos === -1) {
+        intentos += 4
         requestIdleCallback(login)
     }
-    
+
 }
-    
+
 login()
-
-
-
 
 function elegirproducto(params) {
     producto = prompt("Elija el producto que desee comprar")
-    if (producto == camaChica) {
-        alert("Usted ha elegido una " + camaChica + " con un valor de " + precioCamaChica)
-    } else if (producto == camaMediana) {
-        alert("Usted ha elegido una " + camaMediana + " con un valor de " + precioCamaMediana)
-    } else if (producto == camaGrande) {
-        alert("Usted ha elegido una " + camaGrande + " con un valor de " + precioCamaGrande)
+    if (producto == camaChica.nombre) {
+        alert("Usted ha elegido una " + camaChica.nombre + " con un valor de " + camaChica.precio)
+    } else if (producto == camaMediana.nombre) {
+        alert("Usted ha elegido una " + camaMediana.nombre + " con un valor de " + camaMediana.precio)
+    } else if (producto == camaGrande.nombre) {
+        alert("Usted ha elegido una " + camaGrande.nombre + " con un valor de " + camaGrande.precio + " lamentablemente no se encuentra en stock")
+    } else {
+        alert("El producto elegido no existe")
     }
 }
 
 function compra(params) {
-    if (producto == camaChica) {
-        alert("Usted ha elegido una " + camaChica + " con un valor de " + precioCamaChica)
+    if (producto == camaChica.nombre) {
+        alert("Usted ha elegido una " + camaChica.nombre + " con un valor de " + camaChica.precio)
         cuotas = Number(prompt("Con cuantas cuotas desea abonar? 3-6-12"))
         if (cuotas === 3) {
-            alert("El valor mensual es de " + precioCamaChica / 3)
+            alert("El valor mensual es de " + camaChica.precio / 3)
         } else if (cuotas === 6) {
-            alert("El valor mensual es de " + precioCamaChica / 6)
+            alert("El valor mensual es de " + camaChica.precio / 6)
         } else if (cuotas === 12) {
-            alert("El valor mebnsual es de " + precioCamaChica / 12)
+            alert("El valor mensual es de " + camaChica.precio / 12)
         } else {
             alert("El numero de cuotas seleccionado no esta disponible")
         }
     }
 
-    if (producto == camaMediana) {
-        alert("Usted ha elegido una " + camaMediana + " con un valor de " + precioCamaMediana)
+    if (producto == camaMediana.nombre) {
+        alert("Usted ha elegido una " + camaMediana.nombre + " con un valor de " + camaMediana.precio)
         cuotas = Number(prompt("Con cuantas cuotas desea abonar? 3-6-12"))
         if (cuotas === 3) {
-            alert("El valor mensual es de " + precioCamaMediana / 3)
+            alert("El valor mensual es de " + camaMediana.precio / 3)
         } else if (cuotas === 6) {
-            alert("El valor mensual es de " + precioCamaMediana / 6)
+            alert("El valor mensual es de " + camaMediana.precio / 6)
         } else if (cuotas === 12) {
-            alert("El valor mebnsual es de " + precioCamaMediana / 12)
+            alert("El valor mensual es de " + camaMediana.precio / 12)
         } else {
             alert("El numero de cuotas seleccionado no esta disponible")
         }
     }
 
-    if (producto == camaGrande) {
-        alert("Usted ha elegido una " + camaGrande + " con un valor de " + precioCamaGrande)
-        cuotas = Number(prompt("Con cuantas cuotas desea abonar? 3-6-12"))
-        if (cuotas === 3) {
-            alert("El valor mensual es de " + precioCamaGrande / 3)
-        } else if (cuotas === 6) {
-            alert("El valor mensual es de " + precioCamaGrande / 6)
-        } else if (cuotas === 12) {
-            alert("El valor mebnsual es de " + precioCamaGrande / 12)
-        } else {
-            alert("El numero de cuotas seleccionado no esta disponible")
-        }
+    if (producto == camaGrande.nombre) {
+        alert("Usted ha elegido una " + camaGrande.nombre + " con un valor de " + camaGrande.precio + " lamentablemente no se encuentra en stock")
+       
     }
 }
 
-function seguircomprando(params) {
-    let respuesta
-    respuesta = prompt("Desea seguir comprando? si/no")
-    if (respuesta === "si") {
-        alert("Siga con su compra")
-    } else if (respuesta === "no") {
-        alert("Gracias por su compra")
-    } else {
-        alert("Lo siento no lo entendemos")
-    }
+function consultarStock() {
+    const stockDisponible = productos.filter((producto) => producto.stock === true)
+    stockDisponible.forEach(el => alert(el.nombre))
 }
