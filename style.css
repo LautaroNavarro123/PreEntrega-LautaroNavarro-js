@@ -87,3 +87,17 @@
 margin-top: 30px;
 
 }
+
+.input-tamaño{
+  height: 50px;
+  width: 300px;
+}
+
+.select-tamaño{
+  height: 50px;
+  width: 100px;
+}
+
+.colorTexto{
+  color: white;
+}
