@@ -26,4 +26,16 @@ const btnVaciar = document.querySelector(`#btnVaciar`)
 btnVaciar.addEventListener('click', () => {
     localStorage.removeItem('Producto')
     listaDeProductos.innerHTML = 'Se vació el listado'
+    Toastify({
+        text: "Se vacio el listado de productos",
+        duration: 1500,
+        newWindow: true,
+        close: true,
+        gravity: "bottom",
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+          background: "#343a40",
+        },
+      }).showToast();
 })

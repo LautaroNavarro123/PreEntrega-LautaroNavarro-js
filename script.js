@@ -45,4 +45,17 @@ btnCarrito.addEventListener('click', () => {
     localStorage.setItem('Producto', JSON.stringify(productosSeleccionados))
 
     console.log(productosSeleccionados)
+
+    Toastify({
+        text: "Producto agregado con exito",
+        duration: 1500,
+        newWindow: true,
+        close: true,
+        gravity: "bottom",
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+          background: "#343a40",
+        },
+      }).showToast();
 })

@@ -16,6 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
+     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Catalogo-Camas</title>
 </head>
@@ -32,18 +33,22 @@
             <li class="nav-item active">
                 <a class="navbar-brand" href="./listaDeCompras.html">Lista de compras</a>
             </li>
+            <li class="nav-item active">
+                <a class="navbar-brand" href="./mejoresEmpleados.html">Mejores empleados del mes</a>
+            </li>
           </ul>
         </div>
       </nav>
     <main class="container my-5">
 
         <h1 class="colorTexto" >Lista de compras</h1>
-        <ul class="colorTexto"  id="listaDeProductos">
+        <ul class="colorTexto lista"  id="listaDeProductos">
         </ul>
 
         <button class="btn btn-danger" id="btnVaciar">Vaciar listado</button>
     </main>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="./listaDeCompras.js"></script>
 </body>
 </html>
